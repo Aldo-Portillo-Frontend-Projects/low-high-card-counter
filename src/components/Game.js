@@ -1,6 +1,42 @@
 import React from 'react'
 
-export default function Game({runningCount, cardsRemaining, roundedDeck, trueCount, drawLowCard, drawHighCard, drawNeutralCard}) {
+export default function Game({ cardsRemaining, setCardsRemaining}) {
+
+    const [runningCount, setRunningCount] = React.useState(0)
+    const [roundedDeck, setRoundedDeck] = React.useState(cardsRemaining/52)
+    const [trueCount, setTrueCount] = React.useState(1/roundedDeck)
+
+    const drawLowCard = () => {
+        setRunningCount(prevCount => prevCount + 1)
+        setCardsRemaining(prevCount => prevCount -1)
+      }
+    
+      const drawHighCard = () => {
+        setRunningCount(prevCount => prevCount - 1)
+        setCardsRemaining(prevCount => prevCount -1)
+      }
+    
+      const drawNeutralCard = () => {
+        setCardsRemaining(prevCount => prevCount -1)
+      }
+
+
+      function roundToHalf(num) {
+        return Math.round(num*2)/2;
+      } 
+    
+      //Use effect to round deck
+      React.useEffect(() => {
+        setRoundedDeck(roundToHalf(cardsRemaining/52))
+      }, [cardsRemaining])
+    
+      //Use Effect to get True Count
+      React.useEffect(() => {
+        if(roundedDeck > 0){
+          setTrueCount(runningCount / roundedDeck)
+        }
+      }, [roundedDeck, runningCount])
+
   return (
     <div className='game-page'>
         <h3>Running Count: {runningCount}</h3>

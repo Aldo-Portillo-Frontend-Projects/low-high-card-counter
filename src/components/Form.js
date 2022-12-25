@@ -1,27 +1,23 @@
 import React from 'react'
 
-export default function Form({cardsRemaining, setCardsRemaining, bettingUnits, setBettingUnits}) {
+export default function Form({cardsRemaining, setCardsRemaining, setGameRunning, setDeckNumber, deckNumber}) {
 
   const changeNumber = (e) => {
-    console.log(e.target.value)
+    setDeckNumber(e.target.value)
     setCardsRemaining(e.target.value * 52)
   }
 
-  const changeBettingUnits = (e) => {
-    console.log(e.target.value)
-  }
   const onSubmit = (e) => {
     e.preventDefault()
+    setGameRunning(true)
   }
   return (
     <div className='form-page'>
         <h2>Welcome to the Card Counter! Lets  make some money!!!</h2>
         <form onSubmit={onSubmit}>
             <label htmlFor="decks">Decks</label>
-            <input type="number" name="number" placeholder={cardsRemaining/52} onChange={(e)=> changeNumber(e) } />
-            <label htmlFor="bettingUnits">Betting Units</label>
-            <input type="number" name="bettingUnits" placeholder={bettingUnits} onChange={(e)=> changeBettingUnits(e)}/>
-            <button type="submit" onClick={() => console.log(cardsRemaining)}>Submit</button>
+            <input type="number" name="number" min="1" max="10" placeholder={deckNumber} onChange={(e)=> changeNumber(e) } />
+            <button type="submit">Submit</button>
         </form>
     </div>
   )

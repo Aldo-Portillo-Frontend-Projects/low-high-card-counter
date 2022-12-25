@@ -3,10 +3,8 @@ import React from "react";
 function App() {
   const [runningCount, setRunningCount] = React.useState(0)
   const [cardsRemaining, setCardsRemaining] = React.useState(52)
-  const [trueCount, setTrueCount] = React.useState(0)
   const [roundedDeck, setRoundedDeck] = React.useState(cardsRemaining/52)
-
-  const deck = 52;
+  const [trueCount, setTrueCount] = React.useState(1/roundedDeck)
 
   const drawLowCard = () => {
     setRunningCount(prevCount => prevCount + 1)
@@ -23,10 +21,16 @@ function App() {
   function roundToHalf(num) {
     return Math.round(num*2)/2;
   } 
+
   //Use effect to round deck
   React.useEffect(() => {
-    //console.log(Math.round(cardsRemaining/52) *.5)
+    setRoundedDeck(roundToHalf(cardsRemaining/52))
   }, [cardsRemaining])
+
+  //Use Effect to get True Count
+  React.useEffect(() => {
+    setTrueCount(runningCount / roundedDeck)
+  }, [roundedDeck, runningCount])
 
   return (
     <div className="App">
@@ -35,8 +39,8 @@ function App() {
       </header>
       <h3>Running Count: {runningCount}</h3>
       <h3>Cards Remaining: {cardsRemaining}</h3>
-      <h3>True Count: {trueCount}</h3>
       <h3>Rounded Deck: {roundedDeck}</h3>
+      <h3>True Count: {trueCount}</h3>
 
       <button onClick={() => drawLowCard()}>2</button>
       <button onClick={() => drawLowCard()}>3</button>

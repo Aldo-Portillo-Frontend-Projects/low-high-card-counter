@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Game({ cardsRemaining, setCardsRemaining}) {
+export default function Game({ cardsRemaining, setCardsRemaining, setGameRunning, deckNumber}) {
 
     const [runningCount, setRunningCount] = React.useState(0)
     const [roundedDeck, setRoundedDeck] = React.useState(cardsRemaining/52)
@@ -24,6 +24,13 @@ export default function Game({ cardsRemaining, setCardsRemaining}) {
       function roundToHalf(num) {
         return Math.round(num*2)/2;
       } 
+
+      const reshuffle = () => {
+        setCardsRemaining(deckNumber*52)
+        setRunningCount(0)
+        setRoundedDeck(deckNumber)
+        setTrueCount(1/deckNumber)
+      }
     
       //Use effect to round deck
       React.useEffect(() => {
@@ -58,6 +65,8 @@ export default function Game({ cardsRemaining, setCardsRemaining}) {
       <button onClick={() => drawHighCard()}>A</button>
 
       <h3>Statement: {trueCount > 1 ? `You have good odds bet ${trueCount - 1} betting units` : "Your odds aren't good don't increase bets"}</h3>
+      <button onClick={()=>setGameRunning(false)}>New Game</button>
+      <button onClick={() => reshuffle()}>Reshuffle</button>
     </div>
   )
 }

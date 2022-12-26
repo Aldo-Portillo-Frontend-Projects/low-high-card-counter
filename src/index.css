@@ -21,11 +21,6 @@ header, h1, footer, h2, h3, .form-page, form, .game-page{
   background-color: #228c2200;
 }
 
-.game-page{
-  box-shadow: none;
-  background-color: #228c2200;
-}
-
 .form-page{
   display: flex;
   flex-direction: column;
@@ -41,4 +36,9 @@ header, h1, footer, h2, h3, .form-page, form, .game-page{
 }
 .form-page > form > input{
   color: white;
+}
+
+.game-page{
+  box-shadow: none;
+  background-color: #228c2200;
 }

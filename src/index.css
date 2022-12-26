@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  background-color: #228C22;
+  color: antiquewhite;
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App{
+  display: flex;
+  background-color: #228C22;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  box-shadow: inset 0 0 30vh black;
+  margin: 0;
+  border-radius: 25px;
+  
+}
+
+header, h1, footer, h2, h3, .form-page, form, .game-page{
+  background-color: #228c2200;
+}
+
+.game-page{
+  box-shadow: none;
+  background-color: #228c2200;
+}
+
+.form-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-page > form{
+  display: flex;
+  gap: 8px;
+}
+.form-page > form > label{
+  font-size: 1.5rem;
+}
+.form-page > form > input{
+  color: white;
 }

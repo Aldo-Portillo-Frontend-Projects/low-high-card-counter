@@ -17,6 +17,9 @@ function App() {
       <Game cardsRemaining={cardsRemaining} setCardsRemaining={setCardsRemaining} setGameRunning={setGameRunning} deckNumber={deckNumber} /> :
       <Form setCardsRemaining={setCardsRemaining} cardsRemaining={cardsRemaining} setGameRunning={setGameRunning} setDeckNumber={setDeckNumber} deckNumber={deckNumber}/>}
       
+      <footer>
+        Card Counter &copy; Aldo Portillo
+      </footer>
       
     </div>
   );

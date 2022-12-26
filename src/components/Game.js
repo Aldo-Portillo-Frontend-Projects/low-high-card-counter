@@ -50,21 +50,26 @@ export default function Game({ cardsRemaining, setCardsRemaining, setGameRunning
       <h3>Cards Remaining: {cardsRemaining}</h3>
       <h3>Rounded Deck: {roundedDeck}</h3>
       <h3>True Count: {trueCount}</h3>
+      <div className='chip-container'>
+        <div className='low-cards'>
+          <img src={require("../assets/chips/2.png")} alt="2" onClick={() => drawLowCard()}/>
+          <img src={require("../assets/chips/3.png")} alt="3" onClick={() => drawLowCard()}/>
+          <img src={require("../assets/chips/4.png")} alt="4" onClick={() => drawLowCard()}/>
+          <img src={require("../assets/chips/5.png")} alt="5" onClick={() => drawLowCard()}/>
+          <img src={require("../assets/chips/6.png")} alt="6" onClick={() => drawLowCard()}/>
+        </div>
+        <div className='neutral-cards'>
+        <img src={require("../assets/chips/joker.png")} alt="joker" onClick={() => drawNeutralCard()}/>
+        </div>
 
-      <img src={require("../assets/chips/2.png")} alt="2" onClick={() => drawLowCard()}/>
-      <img src={require("../assets/chips/3.png")} alt="3" onClick={() => drawLowCard()}/>
-      <img src={require("../assets/chips/4.png")} alt="4" onClick={() => drawLowCard()}/>
-      <img src={require("../assets/chips/5.png")} alt="5" onClick={() => drawLowCard()}/>
-      <img src={require("../assets/chips/6.png")} alt="6" onClick={() => drawLowCard()}/>
-
-      <img src={require("../assets/chips/joker.png")} alt="joker" onClick={() => drawNeutralCard()}/>
-
-      <img src={require("../assets/chips/10.png")} alt="10" onClick={() => drawHighCard()}/>
-      <img src={require("../assets/chips/jack.png")} alt="jack" onClick={() => drawHighCard()}/>
-      <img src={require("../assets/chips/queen.png")} alt="queen" onClick={() => drawHighCard()}/>
-      <img src={require("../assets/chips/king.png")} alt="king" onClick={() => drawHighCard()}/>
-      <img src={require("../assets/chips/ace.png")} alt="ace" onClick={() => drawHighCard()}/>
-
+        <div className='high-cards'>
+          <img src={require("../assets/chips/10.png")} alt="10" onClick={() => drawHighCard()}/>
+          <img src={require("../assets/chips/jack.png")} alt="jack" onClick={() => drawHighCard()}/>
+          <img src={require("../assets/chips/queen.png")} alt="queen" onClick={() => drawHighCard()}/>
+          <img src={require("../assets/chips/king.png")} alt="king" onClick={() => drawHighCard()}/>
+          <img src={require("../assets/chips/ace.png")} alt="ace" onClick={() => drawHighCard()}/>
+        </div>
+      </div>
       <h3>Statement: {trueCount > 1 ? `You have good odds bet ${trueCount - 1} betting units` : "Your odds aren't good don't increase bets"}</h3>
       <button onClick={()=>setGameRunning(false)}>New Game</button>
       <button onClick={() => reshuffle()}>Reshuffle</button>

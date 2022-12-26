@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  box-shadow: inset 0 0 30vh black;
+  box-shadow: inset 0 0 10vw black;
   margin: 0;
   border-radius: 25px;
   
@@ -41,4 +41,37 @@ header, h1, footer, h2, h3, .form-page, form, .game-page{
 .game-page{
   box-shadow: none;
   background-color: #228c2200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip-container{
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  align-items: center;
+  background-color: #228c2200;
+}
+.chip-container > div > img{
+  width: 16vw;
+  background-color: #228c2200;
+}
+
+@media (min-width: 1025px){
+
+  .App{
+    box-shadow: inset 0 0 20vw black;
+    
+  }
+
+  .chip-container{
+    width: 50vw;
+  }
+  .chip-container > div > img{
+    width: 10vw;
+  }
+  
+
 }

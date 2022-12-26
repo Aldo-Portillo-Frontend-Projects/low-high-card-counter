@@ -31,6 +31,11 @@ export default function Game({ cardsRemaining, setCardsRemaining, setGameRunning
         setRoundedDeck(deckNumber)
         setTrueCount(1/deckNumber)
       }
+
+      const newGame=() => {
+        reshuffle()
+        setGameRunning(false)
+      }
     
       //Use effect to round deck
       React.useEffect(() => {
@@ -46,10 +51,7 @@ export default function Game({ cardsRemaining, setCardsRemaining, setGameRunning
 
   return (
     <div className='game-page'>
-        <h3>Running Count: {runningCount}</h3>
-      <h3>Cards Remaining: {cardsRemaining}</h3>
-      <h3>Rounded Deck: {roundedDeck}</h3>
-      <h3>True Count: {trueCount}</h3>
+      <h2>Statement: {trueCount > 1 ? `You have good odds bet ${trueCount - 1} betting units` : "Your odds aren't good don't increase bets"}</h2>
       <div className='chip-container'>
         <div className='low-cards'>
           <img src={require("../assets/chips/2.png")} alt="2" onClick={() => drawLowCard()}/>
@@ -70,9 +72,15 @@ export default function Game({ cardsRemaining, setCardsRemaining, setGameRunning
           <img src={require("../assets/chips/ace.png")} alt="ace" onClick={() => drawHighCard()}/>
         </div>
       </div>
-      <h3>Statement: {trueCount > 1 ? `You have good odds bet ${trueCount - 1} betting units` : "Your odds aren't good don't increase bets"}</h3>
-      <button onClick={()=>setGameRunning(false)}>New Game</button>
-      <button onClick={() => reshuffle()}>Reshuffle</button>
+      
+      <h3>Running Count: {runningCount}</h3>
+      <h3>Cards Remaining: {cardsRemaining}</h3>
+      <h3>True Count: {trueCount}</h3>
+
+      <div className='buttons'>
+        <button onClick={()=>newGame()}>New Game</button>
+        <button onClick={() => reshuffle()}>Reshuffle</button>
+      </div>
     </div>
   )
 }
